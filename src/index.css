@@ -1,0 +1,106 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 2rem;
+  width: 100%;
+}
+
+h1 {
+  margin: 0 ;
+  font-size: 3.2em;
+  /* line-height: 1.1; */
+}
+ /* NAVBAR */
+.topnav {
+  display: flex;
+  justify-content: space-between;
+  background-color: #333;
+  width: 95%;
+}
+
+.topnav-buttons{
+  display: flex;
+  /* background-color: #a5cd07; */
+  margin: auto 0;
+  gap: 2rem;
+  padding: 1rem 2rem;
+}
+
+.topnav a {
+  color: #f2f2f2;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+/* MAIN CONTENT */
+.main-container{
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  width: 95%; /*to match topnav width*/
+
+}
+
+/*SEARCH CONTAINER*/
+.search-container{
+  background-color: rgb(69, 118, 0);
+  min-width: 200px;
+}
+
+.search-container form{
+  padding: 1rem 0 1rem 1rem;
+}
+
+.search-container label{
+  line-height: 2rem;
+}
+.search-container .submit-btn{
+  margin: 1rem 0;
+  
+}
+.price-min-max{
+  display: grid;
+  grid-template-columns: 1fr fr;
+}
+.input-price{
+  width: 5rem;
+  margin-left: 1rem;
+}
+.search-container select{
+  margin-left: 1rem;
+}
+
+/*CARD CONTAINERS*/
+.card{
+  background-color: #444444;
+  display: flex;
+  border: solid 1px whitesmoke;
+  border-radius: 5px;
+  margin: 1rem;
+  /* padding: 1rem; */
+}
+
+.card-img{
+  width: 20rem;
+  height: 100%;
+
+}
+
+.card-data{
+  padding-left: 1.5rem;
+}
+
+.card-data label{
+  background-color: #106B33;
+  padding: 0.15rem 0.4rem;
+  border-radius: 5px;
+}
