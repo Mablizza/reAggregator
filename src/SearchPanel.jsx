@@ -1,7 +1,12 @@
 import { useState } from "react"
 
-export default function SearchPanel(){
-    const [inputs, setInputs] = useState({});
+export default function SearchPanel({ onFilterChange }){
+    const [inputs, setInputs] = useState({
+        precioMin: 0,
+        precioMax: 1000000,
+        Provincia: "Todas",
+        tipo: "Todo"
+    });
 
     const handleChange = (event) => {
       const name = event.target.name;
@@ -12,8 +17,9 @@ export default function SearchPanel(){
     const handleSubmit = (event) => {
       event.preventDefault();
       console.log(inputs);
+      onFilterChange(inputs);
     }
-  
+
     return (
     <div className="search-container">
       <form onSubmit={handleSubmit}>
@@ -25,7 +31,7 @@ export default function SearchPanel(){
                 className="input-price"
                 name="precioMin"
                 type="number"
-                value={inputs.precioMin ?? 0} 
+                value={inputs.precioMin} 
                 onChange={handleChange}
             />
         </label>
@@ -34,7 +40,7 @@ export default function SearchPanel(){
                 className="input-price" 
                 name="precioMax"
                 type="number"
-                value={inputs.precioMax ?? 1000000} 
+                value={inputs.precioMax} 
                 onChange={handleChange}
             />
         </label>
@@ -42,7 +48,7 @@ export default function SearchPanel(){
         </label>
         {/* <br/> */}
         <label> Provincia:
-            <select name="Provincia" onChange={handleChange}>
+            <select name="Provincia" value={inputs.Provincia} onChange={handleChange}>
                 <option value="Todas"  name="Todas" >Todas</option>
                 <option value="Alajuela"  name="Alajuela" >Alajuela</option>
                 <option value="San José" name="San José" >San José</option>
@@ -55,7 +61,7 @@ export default function SearchPanel(){
         </label>
         <br/>
         <label> Tipo:
-            <select name="tipo" onChange={handleChange}>
+            <select name="tipo" value={inputs.tipo} onChange={handleChange}>
                 <option value="Todo"  name="Todo" >Todo</option>
                 <option value="Terreno" name="Terreno" >Terreno</option>
                 <option value="Vehículo" name="Vehículo" >Vehículo</option>
@@ -65,7 +71,7 @@ export default function SearchPanel(){
             </select>
         </label>
         <br/>
-        <input className="submit-btn" type="submit" />
+        <input className="submit-btn" type="submit" value="Buscar"/>
       </form>
     </div>
     )
