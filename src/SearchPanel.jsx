@@ -1,22 +1,19 @@
 import { useState } from "react"
 
-export default function SearchPanel({ onFilterChange }){
-    const [inputs, setInputs] = useState({
-        precioMin: 0,
-        precioMax: 1000000,
-        Provincia: "Todas",
-        tipo: "Todo"
-    });
+export default function SearchPanel( { onFilterChange, filters } ){
+
+    const [inputs, setInputs] = useState({ ...filters });
 
     const handleChange = (event) => {
       const name = event.target.name;
       const value = event.target.value;
-      setInputs(values => ({...values, [name]: value}))
+      setInputs(prevValues => ({...prevValues, [name]: value}))
+    //   console.log("f:handleChange", inputs)
     }
   
     const handleSubmit = (event) => {
       event.preventDefault();
-      console.log(inputs);
+    //   console.log("f:handleSubmit", inputs);
       onFilterChange(inputs);
     }
 
@@ -48,26 +45,26 @@ export default function SearchPanel({ onFilterChange }){
         </label>
         {/* <br/> */}
         <label> Provincia:
-            <select name="Provincia" value={inputs.Provincia} onChange={handleChange}>
-                <option value="Todas"  name="Todas" >Todas</option>
-                <option value="Alajuela"  name="Alajuela" >Alajuela</option>
-                <option value="San José" name="San José" >San José</option>
-                <option value="Heredia" name="Heredia" >Heredia</option>
-                <option value="Cartago" name="Cartago" >Cartago</option>
-                <option value="Puntarenas" name="Puntarenas" >Puntarenas</option>
-                <option value="Limón" name="Limón" >Limón</option>
-                <option value="Guanacaste" name="Guanacaste" >Guanacaste</option>
+            <select name="provincia" value={inputs.provincia} onChange={handleChange}>
+                <option value="todas"  name="todas" >Todas</option>
+                <option value="alajuela"  name="alajuela" >Alajuela</option>
+                <option value="san josé" name="san josé" >San José</option>
+                <option value="heredia" name="heredia" >Heredia</option>
+                <option value="cartago" name="cartago" >Cartago</option>
+                <option value="puntarenas" name="puntarenas" >Puntarenas</option>
+                <option value="limón" name="limón" >Limón</option>
+                <option value="guanacaste" name="guanacaste" >Guanacaste</option>
             </select>
         </label>
         <br/>
         <label> Tipo:
             <select name="tipo" value={inputs.tipo} onChange={handleChange}>
-                <option value="Todo"  name="Todo" >Todo</option>
-                <option value="Terreno" name="Terreno" >Terreno</option>
-                <option value="Vehículo" name="Vehículo" >Vehículo</option>
-                <option value="Casa" name="Casa" >Casa</option>
-                <option value="Comercial" name="Comercial" >Comercial</option>
-                <option value="Otro" name="Otro" >Otro</option>
+                <option value="todo" name="todo" >Todo</option>
+                <option value="terreno" name="terreno" >Terreno</option>
+                <option value="vehículo" name="vehículo" >Vehículo</option>
+                <option value="casa" name="casa" >Casa</option>
+                <option value="comercial" name="comercial" >Comercial</option>
+                <option value="otro" name="otro" >Otro</option>
             </select>
         </label>
         <br/>
